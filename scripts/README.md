@@ -25,6 +25,7 @@ want. Run them from the repository root with Node 22 unless noted.
 | `store/feature-graphic.mjs` | Renders the Google Play feature graphic (`fastlane/.../featureGraphic.png`) from `store/feature-graphic.html` and a Home screenshot of the plain build (headless Chrome, Roboto) |
 | `de-name-rules.mjs` | The German exercise-name rules. `frontend/src/lib/exercise-names.test.js` holds every German name to them |
 | `catalogue/migration-check.mjs` | Before a catalogue change ships: compares old and new catalogue on copies of real profiles |
+| `sync-upstream.sh` | On a self-hosted fork: merges new commits from DuarteSantos8/openGym and rebuilds with `docker compose up -d --build`. Run it from cron (example at the top of the script) |
 
 Frontend-only helpers (locale checks, bundle size, the service worker stamp) live in
 `frontend/scripts/`, and the API's in `api/scripts/`.
