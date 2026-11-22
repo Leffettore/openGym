@@ -1,0 +1,18 @@
+/* Desktop only (main.js injects it): a maximized window uses its width instead of a phone-sized
+   column. Below 1400px the app's own layout (frontend/src/index.css) is untouched.
+   Kept out of the frontend so merges from upstream never conflict. */
+@media (min-width:1400px){
+  html #app{max-width:1600px}
+  html .conn-row{max-width:900px}
+  html #app .narrow{max-width:900px}
+
+  /* Home: its cards in two columns, the greeting across both. */
+  html #app .narrow:has(> .checkin-card, > .streak-card, > .challenges){max-width:1300px;columns:2;column-gap:14px}
+  html #app .narrow:has(> .checkin-card, > .streak-card, > .challenges) > *{break-inside:avoid}
+  html #app .narrow:has(> .checkin-card, > .streak-card, > .challenges) > .hdr{column-span:all}
+
+  /* Stats: each section's cards two to a row; headings, tiles and lists keep the full width. */
+  html #app .stats-sect{display:grid;grid-template-columns:1fr 1fr;column-gap:14px;align-items:start}
+  html #app .stats-sect > :is(h2,h4,.kpis,.row,.list,.sect-b){grid-column:1/-1}
+  html #app .stats-sect > *{min-width:0}
+}

@@ -1,0 +1,25 @@
+{
+  "name": "opengym-desktop",
+  "private": true,
+  "version": "1.4.5",
+  "description": "openGym for Linux: the phone build in a desktop window, paired with your server",
+  "license": "AGPL-3.0-or-later",
+  "author": "openGym",
+  "homepage": "https://opengym.ch",
+  "main": "main.js",
+  "scripts": {
+    "app": "cd ../frontend && VITE_MOBILE=1 npx vite build --outDir ../desktop/app --emptyOutDir && node ../scripts/catalogue/stage-media.mjs ../desktop/app",
+    "start": "electron .",
+    "dist": "npm run app && electron-builder --linux AppImage deb"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "ch.duartesantos.opengym",
+    "productName": "openGym",
+    "files": ["main.js", "wide.css", "icon.png", "app/**"],
+    "linux": { "maintainer": "openGym <https://github.com/DuarteSantos8/openGym>", "category": "Utility", "icon": "icon.png" }
+  }
+}
